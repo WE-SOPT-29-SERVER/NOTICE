@@ -8,13 +8,14 @@
 
 # 2. 첫 세팅 방법
 
-자신의 이름으로 된 repository를 clone 받아서 이용한다.
+자신의 이름으로 된 repository를 clone 받아서 이용합니다.
 <br />
 <Br />
 
 ## 2.1. clone 이란?
 
-원격의 Git 저장소를 로컬에 복제해오는 명령어이다.  
+원격의 Git 저장소를 로컬에 복제해오는 명령어입니다.
+
 <br/>
 
 ## 2.2. clone 방법
@@ -140,7 +141,7 @@ commit message를 어떻게 적을지에 관한 약속입니다.
 
 ```
 git commit -m "feat: postGET API 구현"
-git commit -m "feat: 소셜 로그인 구현 "
+git commit -m "feat: 소셜 로그인 구현"
 git commit -m "fix: JWT 버그 수정"
 git commit -m "docs: readme 수정"
 ```
@@ -151,7 +152,7 @@ git commit -m "docs: readme 수정"
 
 ```
 git commit -m "✨ [FEAT] : postGET API 구현"
-git commit -m "✨ [FEAT] : 소셜 로그인 구현 "
+git commit -m "✨ [FEAT] : 소셜 로그인 구현"
 git commit -m "🔨 [FIX] : JWT 버그 수정"
 git commit -m "📝 [DOCS] readme 수정
 ```
@@ -182,6 +183,7 @@ git commit -m "📝 [DOCS] readme 수정
 Software개발시 개발자들은 동일한 소스코드 위에서 신규 개발, 버그 수정 등의 업무를 협업하곤 합니다. 이때 동일한 branch로 작업을 하면, 합칠 때에 일명 `conflict`라고 부르는 것이 발생할 수 있습니다. 이를 방지하기 위해 보통 여러 개의 브랜치(`Branch`)를 생성해 하나의 프로젝트를 여러 갈래로 나누어서 관리합니다. 우선 `branch`를 나누어서 각자 맡은 부분을 따로 개발을 한 후, 나중에 main 브랜치로 합치는 것이죠.
 
 `pull request`란, 여러 갈래의 브랜치를 하나로 합치는 과정에서 `"저의 코드를 봐주시고, main branch에 반영해주세요"` 라고 요청하는 행위입니다.
+
 <br/>
 <br/>
 
@@ -197,11 +199,19 @@ branch 이름은 kebab case(소문자 단어들을 - dash로 연결하는 문자
 
 ## 6.4. branch로 이동하는 방법
 
+`git checkout <branch_name>`
+
+또는
+
 `git switch <branch_name>`
 <br/>
 <br/>
 
 ## 6.5. branch 생성과 동시에 이동하는 방법
+
+`git checkout -b <branch_name>`
+
+또는
 
 `git switch -c <branch_name>`
 <br/>
@@ -215,55 +225,75 @@ branch 이름은 kebab case(소문자 단어들을 - dash로 연결하는 문자
 
 ## 6.6. `git stash`
 
-새 branch에서 작업해야 하는데, 잘못하여 main이나 다른 branch에서 작업한 경우에 자주 사용한다.
-이전 commit의 상태로 되돌리고, commit 이후의 모든 파일(add 한 것도)을 잠깐 스택에 저장해두는 명령어.
+새 branch에서 작업해야 하는데, 잘못하여 main이나 다른 branch에서 작업한 경우에 자주 사용합니다.
+
+마지막 커밋 이후의 변경 상태를 `stash`라는 공간에 '임시로 저장하는' 행위입니다.
+
 <br/>
 <br/>
 
 ## 6.7. `git stash pop`
 
-임시 저장해둔 파일들을 꺼내오는 명령어.
+`stash` 공간에 임시 저장해둔 변경사항을 다시 꺼내오는 명령어입니다.
 
-즉, feature/header라는 branch에서 작업을 하다가, feature/footer라는 branch에서 해야할 일이 생겼다고 하자. 이때 commit을 하기엔 하나의 기능을 마치지 않은 단계라고 하자. 이 상태에서 branch를 옮기려고 하면 옮겨지지 않는다. commit하지 않았기 때문에 local 환경에서 기억할 수 없기 때문이다. 그러므로 이 변경사항들을 임시로 저장해둬야하는데, 이를 위해 `git stash` 명령어를 사용한다. 이후 feature/footer에서 작업을 마치고 다시 feature/header로 돌아와서 `git stash pop` 명령어를 사용하면 이전에 임시저장 해둔 변경사항이 다시 돌아오게 되어, 작업을 이어나갈 수 있게 된다.
+예를 들어 feature/header라는 branch에서 작업을 하다가, feature/footer라는 branch에서 해야할 일이 생겼다고 해봅시다. 이때 작업하던 기능이 마무리되지 않아서 commit을 하고 브랜치를 옮기기엔 조금 애매한 상황일 수 있습니다. 그런데 이 상태에서 (commit하지 않은 상태에서) branch를 옮기려고 하면 경고 메시지를 띄우며 옮겨지지 않습니다.
+
+이때 사용하는 명령어가 위에서 살펴본 `git stash`입니다. 이후 feature/footer에서 작업을 마치고 다시 feature/header로 돌아와서 `git stash pop` 명령어를 사용하면 이전에 임시저장 해둔 변경사항이 다시 돌아오게 되어, 작업을 이어나갈 수 있게 됩니다.
 <br/>
 <br/>
 
 ## 6.8. pull request 를 날리는 방법
 
-해당 브랜치에 push하고 github repository에 들어가보면 자동으로 pull request 날리겠냐는 메시지가 뜨게 된다.
+해당 브랜치에 push하고 github repository에 들어가보면 자동으로 pull request 날리겠냐는 메시지가 뜨게 됩니다.
 
-feature/header branch에서 작업을 하고, `git push feature/header` 하였다면, 아래와 같이 메시지가 뜬다.
-<img src="https://user-images.githubusercontent.com/24906022/134860968-5247ac82-5e7e-4683-9131-ccb775da54f9.png">
+feature/header branch에서 작업을 하고, `git push feature/header` 하였다면, 아래와 같이 해당 브랜치에서 push가 일어났다는 메시지가 뜹니다.
+<img src="https://user-images.githubusercontent.com/29723695/135638917-dcab7b30-87db-4618-bd43-73a12e6bc408.png">
 
-그리고 `Compare & pull request` 버튼을 누르면 아래와 같은 창이 뜨게 된다.
-<img src="https://user-images.githubusercontent.com/24906022/134861317-ef32abc4-7d9a-436d-8a9f-416668240f0d.png">
-제목을 입력하고, 내용에는 자신이 이 pull request에서 한 작업, 코드 확인 받고 싶은 부분을 적어주면 된다. 또한 UI 구현 문제가 있거나, 구현 사항을 확실히 보여주고 싶은 경우 img나 gif를 통해서 첨부해주면 좋을 것이다.
+그리고 `Compare & pull request` 버튼을 누르면 아래와 같은 창이 뜨게 됩니다.
+
+<img src="https://user-images.githubusercontent.com/29723695/135639211-5ba758b7-22d9-49e8-b719-bd792d024670.png">
+
+본인이 한 작업에 대한 적절한 제목과 설명을 입력하고 `Create pull request` 버튼을 누르면 됩니다.
+
+설명란엔 이미지를 첨부할 수도 있습니다.
 <br/>
+
 <br/>
 
 ## 6.9. pull request 에서 comment 달고, approve 받기
 
-pull request를 날리면, 해당 pr에서 작성된 코드 변경사항을 볼 수 있고, comment를 달아 칭찬을 해주거나/피드백을 해줄 수 있다. `Files changed`에 들어가서 변경사항을 확인하고, comment를 달아준다.
-<img src="https://user-images.githubusercontent.com/24906022/134861942-e84cd47b-500f-4c68-8b8f-414faa0e3857.png">
-그리고 오른쪽 위에 `Review changes `버튼을 눌러, 전체 코멘트를 달아주거나, approve 해주거나, Request changes로 수정 요청을 할 수 있다. 그래서 보통 프로젝트 진행 시, 리드 개발자가 approve한 다음에, pull request를 merge할 수 있도록 기능을 추가하기도 한다. 과제에서는 파트장이 approve 한 다음에, merge될 수 있도록 할 것이다.
-<img src="https://user-images.githubusercontent.com/24906022/134861725-f376fee2-af3e-4cd0-8bd6-847a9e384895.png">
+pull request를 날리면, 해당 pr에서 작성된 코드 변경사항을 볼 수 있고, comment를 달아 칭찬을 해주거나/피드백을 해줄 수 있습니다.
+
+<img src="https://user-images.githubusercontent.com/29723695/135639772-c2eaaa57-13d9-47d6-b435-eec363d0e1ad.png">
+
+`Files changed`에 들어가면 변경사항을 확인할 수 있고, `Review changes`를 누르면 comment를 달거나, pull request를 approve 해주거나, Request changes로 수정 요청을 할 수 있습니다.
+
+<img src="https://user-images.githubusercontent.com/29723695/135640081-0669d743-4822-4e6a-873c-f800b6aadbe0.png">
+
+보통 프로젝트 진행 시, 리드 개발자가 approve한 다음에, pull request를 merge할 수 있도록 기능을 추가하기도 합니다. 과제에서는 파트장이 approve 한 다음에, merge될 수 있도록 할 것입니다.
 <br/>
 <br/>
 
 ## 6.10. branch 내용을 main으로 합치기
 
-과제 제출을 하고, 파트장이 approve하였다면, branch를 main에 merge할 수 있다.
-<img src="https://user-images.githubusercontent.com/24906022/134882348-97e2fe41-52c9-4951-87bd-69f3f893fd1f.png">
-그리고 이제 해당 브랜치는 필요가 없으므로 `delete branch` 버튼을 눌러, branch를 삭제해주면 된다.
-<img src="https://user-images.githubusercontent.com/24906022/134882533-b5b3f69c-286d-4299-9085-a43c05fbffa6.png">
+과제 제출을 하고, 파트장이 approve하였다면, branch를 main에 merge할 수 있습니다.
+
+<img src="https://user-images.githubusercontent.com/29723695/135640890-075243fe-7a0d-4859-8537-65cdd45cf5fc.png">
+
+그리고 이제 해당 브랜치는 필요가 없으므로 `delete branch` 버튼을 눌러, branch를 삭제해줄 수 있습니다.
+
+<img src="https://user-images.githubusercontent.com/29723695/135640997-4b6edb06-54df-420e-bf11-8a07c4916126.png">
 <br/>
 <br/>
 
 ## 6.11. main에 branch 내용이 붙은 코드를 local 에서 불러오기 (git pull)
 
-특정 branch 내용을 main에 merge 하면, github repository에 잘 반영될 것이다. 하지만 working directory에서는 반영되어 있지 않을 것이다. 이 상태로 작업을 하고 push를 하면, local과 remote(github)간의 차이로 인해 conflict가 발생할 것이다. 그러므로, github의 변경사항을 working directory로 가져올 필요가 있다. 이 명령어가 바로 git pull 이다. main에 있는 내용을 가져온다는 의미에서 `git pull origin main`을 사용한다.
+특정 branch 내용을 main에 merge 하면 github repository(즉 remote)에 반영될 것입니다. 하지만 working directory(즉 local, 또는 내 컴퓨터)에서는 반영되어 있지 않을 것입니다. 이 상태로 작업을 하고 push를 하면, local과 remote간의 차이로 인해 conflict가 발생할 것입니다. 그러므로, 방금의 merge로 인해 발생한 github 상의 변경사항을 working directory로 가져올 필요가 있습니다. 이 명령어가 바로 `git pull`입니다.
 
-[pr 날리고, comment달고, approve 한 좋은 예시](https://github.com/pa-rang/kyrics-frontend/pull/15)  
+main에 있는 내용을 가져온다는 의미에서 `git pull origin main`을 사용합니다.
+
+[pr 날리고, comment달고, approve 한 좋은 예시](https://github.com/pa-rang/kyrics-frontend/pull/15) (웹팟장님 감사합니다)
+<br />
 <br />
 
 # 7. 정리
@@ -271,7 +301,7 @@ pull request를 날리면, 해당 pr에서 작성된 코드 변경사항을 볼 
 과제 제출은
 
 1. 자신의 이름으로 된 repository를 clone 받기
-2. 새 branch를 파서 개발하고 pull request 날리기
+2. 새 branch를 파서 개발하고 pull request 날리기 (브랜치 이름은 `assignment1-wooyeong-kim` 꼴로, 과제 번호와 본인 이름을 넣기)
 3. commit message를 아무렇게나 기술하지 않고, convention을 지켜서 commit 하기
 
 <br/>
